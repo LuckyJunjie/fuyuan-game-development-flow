@@ -221,4 +221,51 @@ Skills位于 `~/.openclaw/skills/` 或 `/workspace/skills/`
 
 ---
 
+## 飞书多维表格任务管理
+
+### 表格信息
+
+- **App Token**: `Er2fbGeRSaR1C8seFunc6psnnYb`
+- **Table ID**: `tblQWdW1zqzBFZXw`
+- **名称**: 世界上最好玩的弹珠机游戏
+
+### 字段
+
+| 字段 | 类型 |
+|------|------|
+| Task | 文本 |
+| Priority | 单选 (Normal/Important/Done) |
+| Status | 单选 (Not yet started/Ongoing/Stalled/Completed) |
+| Task leader | 人员 |
+| Progress notes | 文本 |
+| Departments | 多选 |
+
+### 工作流程
+
+1. **创建任务/Bug** → 发现问题时创建
+2. **设置状态** → Not yet started → Ongoing → Completed
+3. **更新进度** → 在Progress notes中记录
+
+### 常用操作
+
+```python
+# 创建任务
+feishu_bitable_create_record(app_token, table_id, fields)
+
+# 更新任务状态
+feishu_bitable_update_record(app_token, table_id, record_id, fields)
+
+# 查询任务
+feishu_bitable_list_records(app_token, table_id)
+```
+
+### 规则
+
+- 发现Bug立即创建记录
+- 修复完成后及时更新状态
+- 任务关联Open GDD章节
+- 设置正确的负责人 (Vanguard001/CodeForge)
+
+---
+
 *更新于: 2026-02-21*
