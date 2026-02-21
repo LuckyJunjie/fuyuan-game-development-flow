@@ -185,3 +185,40 @@ flowchart LR
 
 *文档更新时间: 2026-02-21*
 *来源: Master Jay 设计*
+
+---
+
+## MCP和Skills生态
+
+### MCP服务器
+
+使用mcporter管理MCP服务器:
+
+```bash
+# 列出已配置的MCP
+mcporter config list
+
+# 查看MCP工具列表
+mcporter list <mcp-name>
+
+# 调用MCP工具
+mcporter call <mcp-name>.<tool> key=value
+```
+
+### 已安装MCP
+
+| MCP | 功能 |
+|-----|------|
+| filesystem | 文件系统读写 |
+| github | GitHub操作 |
+| godot | Godot引擎操作 |
+
+### Skills
+
+Skills位于 `~/.openclaw/skills/` 或 `/workspace/skills/`
+
+安装新Skill: `clawhub install <skill-name>`
+
+---
+
+*更新于: 2026-02-21*
