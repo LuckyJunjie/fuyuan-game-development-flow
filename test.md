@@ -239,6 +239,23 @@ grep -E "✅|❌|错误" test.log
 
 **测试模式:** `godot --testmode` - 跳过菜单直接进入游戏
 
+## GDSnap 截图测试
+
+GDSnap 是专业的截图测试工具，可与 GdUnit4 集成:
+
+```gdscript
+# 在 GdUnit4 测试中使用
+var result = GDSnap.take_screenshot("main_menu", get_viewport())
+assert_true(result.is_success, "截图比对失败")
+
+# 首次运行生成基准图
+GDSnap.update_base_screenshot("main_menu", get_viewport())
+```
+
+**安装:** 通过 Godot AssetLib 搜索 "GDSnap" 或手动下载到 addons/
+
+详见: `pi-pin-ball/doc/gdsnap_integration.md`
+
 ---
 
 ## 测试模式
