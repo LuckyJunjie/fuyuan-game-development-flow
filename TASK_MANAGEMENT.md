@@ -33,8 +33,8 @@
 🔴 bug (最高)     → Bug修复，阻断性问题
 🟡 test           → 测试用例实现
 🔵 feature        → 新功能开发
-⚪ Normal         → 普通任务
 🟢 Important      → 重要任务
+⚪ Normal          → 普通任务
 ✅ Done           → 已完成
 ```
 

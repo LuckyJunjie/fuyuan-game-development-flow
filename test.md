@@ -57,6 +57,30 @@ godot --headless --path . -s addons/gut/gut_cmdln.gd -testdir=res://test/unit/
 godot --headless --script res://addons/gdUnit4/bin/GdUnitCmdTool.gd --test res://test/
 ```
 
+## 截图测试的目的
+
+**核心目的：验证代码真正可以运行**
+
+```
+截图不是为了对比差异，而是为了证明代码真正可以跑！
+- 代码汇报成功 ≠ 实际能运行
+- 截图 = 游戏的"存活证明"
+```
+
+### 截图时机
+
+1. **首次运行** - 验证游戏能启动
+2. **修复Bug后** - 验证问题已解决
+3. **新功能开发** - 验证功能正常
+4. **CI/CD构建** - 自动化验证
+
+### 截图 vs 视觉回归
+
+| 类型 | 目的 | 工具 |
+|------|------|------|
+| **运行验证截图** | 证明代码能跑 | 手动截图/broser工具 |
+| **视觉回归截图** | 对比差异 | GDSnap/ScreenshotTest |
+
 ### 3. GDSnap (截图测试)
 
 **下载:** Godot AssetLib → 搜索 "GDSnap"  
