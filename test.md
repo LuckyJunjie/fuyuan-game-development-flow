@@ -203,7 +203,35 @@ jobs:
 | `./test/run_screenshot_tests.sh` | 运行截图测试 |
 | `./test/run_all_tests.sh` | 运行全部测试 |
 
----
+## 测试模式
 
-*更新于: 2026-02-22*
-*参考: PI-PinBall项目 test/ 目录*
+PI-PinBall支持测试模式，用于自动化测试:
+
+```bash
+# 测试模式启动 - 跳过菜单直接进入游戏
+godot --testmode
+
+# 指定测试场景
+godot --testscene=Main
+
+# 无头测试 (无窗口)
+godot --headless --testmode
+```
+
+### TestManager
+
+```gdscript
+# TestManager.gd - 测试模式管理器
+extends Node
+
+var test_mode: bool = false
+var test_scene: String = ""
+
+func _ready() -> void:
+    var args = OS.get_cmdline_args()
+    for arg in args:
+        if arg == "--testmode":
+            test_mode = true
+```
+
+详见: `pi-pin-ball/doc/test_mode.md`
