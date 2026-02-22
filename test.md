@@ -203,6 +203,44 @@ jobs:
 | `./test/run_screenshot_tests.sh` | 运行截图测试 |
 | `./test/run_all_tests.sh` | 运行全部测试 |
 
+## 控制台测试
+
+轻量级测试方式，通过日志输出验证游戏逻辑:
+
+```bash
+# 运行测试并捕获输出
+godot --headless --path . -s test/run_tests.gd 2>&1 | tee test.log
+
+# 分析结果
+grep -E "✅|❌|错误" test.log
+```
+
+详见: `pi-pin-ball/doc/console_test.md`
+
+---
+
+## 四层测试金字塔
+
+```
+                    ╔═══════════════╗
+                    ║  性能测试     ║  ← 第四层: 帧率/内存监测
+                    ║  Performance  ║
+                    ╠═══════════════╣
+                    ║  截图测试     ║  ← 第三层: 视觉回归测试
+                    ║  Screenshot   ║
+                    ╠═══════════════╣
+                    ║  集成测试     ║  ← 第二层: 场景交互测试
+                    ║  Integration  ║
+                    ╠═══════════════╣
+                    ║  单元测试     ║  ← 第一层: 函数/类测试
+                    ║    Unit       ║
+                    ╚═══════════════╝
+```
+
+**测试模式:** `godot --testmode` - 跳过菜单直接进入游戏
+
+---
+
 ## 测试模式
 
 PI-PinBall支持测试模式，用于自动化测试:
@@ -218,20 +256,9 @@ godot --testscene=Main
 godot --headless --testmode
 ```
 
-### TestManager
-
-```gdscript
-# TestManager.gd - 测试模式管理器
-extends Node
-
-var test_mode: bool = false
-var test_scene: String = ""
-
-func _ready() -> void:
-    var args = OS.get_cmdline_args()
-    for arg in args:
-        if arg == "--testmode":
-            test_mode = true
-```
-
 详见: `pi-pin-ball/doc/test_mode.md`
+
+---
+
+*更新于: 2026-02-22*
+*参考: PI-PinBall项目 test/ 目录*
