@@ -12,11 +12,20 @@
 
 | 服务 | 端口 | 状态 | 外网访问 |
 |------|------|------|----------|
-| securities-analysis-tool | 8000 | 待部署 | ⏳ |
+| securities-analysis-tool | 8000 | ✅ 运行中 | ⏳ |
 | poetry-english-tool | 3000 | 待部署 | ⏳ |
 | Agent Tool Server | 8765 | 待部署 | ⏳ |
 
-### 2. 内网穿透
+### 2. 远程唤醒 (Wake-on-LAN)
+
+| 设备 | MAC 地址 | 状态 |
+|------|----------|------|
+| Mac mini 1 | 待配置 | ⏳ |
+| Mac mini 2 | 待配置 | ⏳ |
+
+详见 [WAKE_ON_LAN.md](./WAKE_ON_LAN.md)
+
+### 3. 内网穿透
 
 使用 natapp 或 Cloudflare Tunnel 实现外网访问。
 
