@@ -107,10 +107,11 @@
 - [x] 创建启动脚本
 - [ ] 配置OpenClaw MCP客户端连接
 
-### 阶段2: Godot安装 (需要主机)
-- [ ] 在开发机器上安装Godot 4.5
-- [ ] 配置GODOT_PATH环境变量
-- [ ] 测试MCP连接
+### 阶段2: Godot安装 (Raspberry Pi)
+- [x] Raspberry Pi 4 (8GB) 验证可运行 Godot
+- [ ] 安装 Godot 4.5.1 到树莓派
+- [ ] 测试 Godot 截图功能
+- [ ] 配置 GODOT_PATH 环境变量
 
 ### 阶段3: 测试框架 (待定)
 - [ ] 安装GdUnit4插件
@@ -151,4 +152,48 @@ python -m godot_mcp.server
 
 ---
 
-*最后更新: 2026-02-21*
+## 树莓派安装 Godot
+
+### 硬件要求
+- Raspberry Pi 4/5 (8GB 推荐)
+- 系统: 64-bit Linux (ARM64)
+
+### 安装脚本
+
+```bash
+# 下载安装脚本
+wget -O install-godot.sh https://raw.githubusercontent.com/LuckyJunjie/agent-tools/main/scripts/install-godot.sh
+# 或使用本地脚本
+bash /home/pi/.openclaw/workspace/scripts/install-godot.sh
+```
+
+### 手动安装
+
+```bash
+VERSION="4.5.1"
+wget -O /tmp/godot.zip "https://github.com/godotengine/godot/releases/download/${VERSION}-stable/Godot_v${VERSION}-stable_linux.arm64.zip"
+unzip /tmp/godot.zip
+sudo mv Godot_v${VERSION}-stable_linux.arm64 /usr/local/bin/godot
+chmod +x /usr/local/bin/godot
+```
+
+### 验证安装
+```bash
+godot --version
+```
+
+### 运行 headless 模式
+```bash
+# 无头模式运行 (无GUI)
+godot --headless --path /path/to/project
+```
+
+### 截图
+```bash
+# 截取项目截图
+godot --headless --path /path/to/project --rendering-method gl_compatibility -s screenshot.gd
+```
+
+---
+
+*最后更新: 2026-02-25*
